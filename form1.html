@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form com validações</title>
+    <link rel="stylesheet" href="./doform.css">
+</head>
+<body>
+    <h1>Um formulário qualquer</h1>
+    <form>
+        <div>
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        
+        <div>
+            <label for="nascimento">Data de nascimento:</label>
+            <input type="date" id="nascimento" name="nascimento" required>
+        </div>
+        
+        <div>
+            <label for="e-mail">E-mail:</label>
+            <input type="email" id="e-mail" name="e-mail" required>
+        </div>
+
+        <div>
+            <label for="numero">Um número de 0 a 30:</label>
+            <input type="number" id="numero" name="numero" required>
+        </div>
+        
+        <div>
+            <label for="senha">Senha (pelo menos 8 caracteres, tá?):</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+
+        <div>
+            <label for="confirmar-senha">Confirme a senha:</label>
+            <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+        </div>
+
+        <button type="button" onclick="verificar()">Enviar</button>
+
+        <p id="mensagemErro"></p>
+    </form>
+
+    <script>
+        
+        const mensagemErro = document.getElementById('mensagemErro')
+
+        function borderRed(inputInvalido) {
+            mensagemErro.textContent = 'Tem coisa errada aí!'
+            inputInvalido.style.border = '1px solid red'
+        }
+
+        function borderNormal(input) {
+            input.style.border = '0.1px solid black'
+        }
+
+        function tudoCerto() {
+            mensagemErro.textContent = 'Obrigado por enviar :)'
+            mensagemErro.style.color = 'black'
+        }
+
+        function verificar() {
+            const iNome = document.getElementById("nome")
+            const iNascimento = document.getElementById('nascimento')
+            const iEmail = document.getElementById('e-mail')
+            const iNumero = document.getElementById('numero')
+            const iSenha = document.getElementById('senha')
+            const iConfiSenha = document.getElementById('confirmar-senha')
+            let contagemErros = 0
+
+            if(!(iNome?.value.includes(' ')) || /\d/.test(iNome?.value)) {
+                borderRed(iNome)
+                contagemErros++
+                // alert('Aposto que seu nome não tem só uma palavra.')
+                // alert('Não existe nome com número! (Que eu saiba)')
+            } else {
+                borderNormal(iNome)
+            }
+
+            if(iNascimento?.value.split('-')[0] < 1907 || iNascimento?.value.split('-')[0] > 2022) {
+                borderRed(iNascimento)
+                contagemErros++
+                // alert('Ha! Boa tentativa. Você não é tão velho (ou novo) assim.')
+            } else {
+                borderNormal(iNascimento)
+            }
+
+            if(!(iEmail?.value.includes('.com'))) {
+                borderRed(iEmail)
+                contagemErros++
+                // alert('Que email é esse?')
+            } else {
+                borderNormal(iEmail)
+            }
+
+            if(iNumero?.value < 0 || iNumero?.value > 30 || iNumero?.value == '') {
+                borderRed(iNumero)
+                contagemErros++
+                // alert(`Você não leu? Esse número ${iNumero?.value} não vale.`)
+            } else {
+                borderNormal(iNumero)
+            }
+            
+            if(iSenha?.value.length < 8) {
+                borderRed(iSenha)
+                contagemErros++
+                // alert('É pra senha ter OITO caracteres (ou mais), amado.')
+            } else {
+                borderNormal(iSenha)
+            }
+
+            if(iConfiSenha?.value !== iSenha?.value) {
+                borderRed(iConfiSenha)
+                contagemErros++
+                // alert('Suas senhas estão diferentes, hehe.')
+            } else {
+                borderNormal(iConfiSenha)
+            }
+
+            if(contagemErros == 0) {
+                tudoCerto()
+            }
+        }
+    </script>
+</body>
+</html>
