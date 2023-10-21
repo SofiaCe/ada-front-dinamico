@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planee - Login</title>
+    <link rel="stylesheet" href="./planee-style.css">
+    <link rel="stylesheet" href="./acesso-planee-style.css">
+    <link rel="icon" href="./planee-logo.jpeg">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="container-texto">
+                <h1>Acesse sua conta no <span>Planee</span></h1>
+                <p id="ir-entrar">Ainda não tem um cadastro? <a href="./cadastro-planee.html">Criar uma conta</a></p>
+            </div>
+    
+            <div class="container-form">
+                <form action="" method="post">
+                    <div class="form-item">
+                        <h3>Coloque seus dados para acessar a conta</h3>   
+                    </div>
+        
+                    <div class="form-item">
+                        <label for="e-mail">E-mail</label>
+                        <input type="email" id="e-mail" required>
+                    </div>
+        
+                    <div class="form-item">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" required>
+                        <!-- <small><a href="">Esqueceu a senha?</a></small> -->
+                    </div>
+        
+                    <button type="button" onclick="verificarLogin()">Entrar</button>
+                    <p id="mensagemErroL"></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="./planee.js"></script>
+</body>
+</html>

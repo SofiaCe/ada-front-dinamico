@@ -1,0 +1,81 @@
+form {
+    border: 2px solid rgb(188, 76, 236);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+form h3 {
+    text-align: center;
+}
+
+form label {
+    margin-bottom: 8px;
+}
+
+form input {
+    display: block;
+    width: 500px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+form button {
+    padding: 10px 20px;
+    border-radius: 3px;
+    background-color: rgb(188, 76, 236);
+    transition: 300ms;
+    color: white;
+}
+
+form button:hover {
+    cursor: pointer;
+    background-color: rgb(145, 36, 192);
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+h1 span {
+    background-color: aliceblue;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.form-item {
+    margin-bottom: 16px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-texto {
+    margin: 40px;
+}
+
+.container-texto h1 {
+    font-weight: 700;
+}
+
+.container-form {
+    margin: 40px;
+    padding: 10px;
+}
+
+@media screen and (orientation: portrait) {
+
+    .container, .container-texto, .container-form {
+        display: block;
+    }
+
+    #texto-login {
+        position: relative;
+        bottom: 0%;
+    }
+
+}
